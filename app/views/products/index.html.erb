@@ -1,0 +1,29 @@
+<div class="jumbotron">
+<table>
+<h1>Got CRUD?</h1>
+
+<p class="lead">Get your own. Get some for your partner too.</p>
+<tbody>
+<% @products.each do |product| %>
+<tr>
+<%=product.name %>($
+<%=product.price %>)</tr>
+<% end %>
+</tbody>
+</table>
+<br/>
+<%=form_tag charges_path do %>
+<article>
+<h3>$5.00 for all four verbs!</h3>
+
+<label class="amount"></label>
+</article>
+<script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="A month's subscription" data-amount="500"></script>
+<% end %>
+<p><strong>use</strong> (4242 4242 4242 4242 for the card #
+<br/>any name - i.e., Michael Herman
+<br/>any date in the future for the expiration date
+<br/>any three-digit number for the CVC)</p>
+</div>
+
+
